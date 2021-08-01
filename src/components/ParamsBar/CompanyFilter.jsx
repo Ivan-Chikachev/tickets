@@ -1,11 +1,12 @@
-import {getCountTransfer} from "../../functions/functions";
+import {getCompanyName} from "../../functions/functions";
 
-const StopsFilter = ({value, stops, onChange}) => {
+const CompanyFilter = ({value, companies, onChange}) => {
+
 
     return (
         <div className="filter">
-            <h4 className='filter__title'>Фильтровать</h4>
-            {stops.map(i =>
+            <h4 className='filter__title'>Авиакомпании</h4>
+            {companies.map(i =>
                 <label className='filter__label' key={i}>
                     <input
                         onChange={onChange}
@@ -13,11 +14,11 @@ const StopsFilter = ({value, stops, onChange}) => {
                         value={i}
                         type="checkbox"
                         className='filter__input'/>
-                    {getCountTransfer(i)}
+                    {getCompanyName(i)}
                 </label>
             )}
         </div>
     )
 }
 
-export default StopsFilter;
+export default CompanyFilter;

@@ -1,4 +1,5 @@
 import {format} from 'date-fns';
+import {getCompanyName, getCountTransfer} from "../../functions/functions";
 
 const TicketItem = ({carrier, price, segments}) => {
 
@@ -36,11 +37,6 @@ const TicketItem = ({carrier, price, segments}) => {
     const endTime2 = format(new Date(startToEnd(date2, duration2)), 'HH:mm')
     const endDate2 = format(new Date(startToEnd(date2, duration2)), ' d MMM, e')
 
-    const getCountTransfer = (i) => {
-        if (i === 0) return "Без пересадок"
-        if (i === 1) return '1 Пересадка'
-        if (i >= 2) return `${i} Пересадки`
-    }
     return (
         <div className='ticket'>
             <div className="ticket__header">
@@ -90,6 +86,9 @@ const TicketItem = ({carrier, price, segments}) => {
             </div>
             <div className="ticket__stops-block">
                 <span className='ticket__stops'> {getCountTransfer(stops2.length)}</span>
+            </div>
+            <div className="company">
+                Рейс выполняет: {getCompanyName(carrier)}
             </div>
             <button className="btn btn--choose">
                 Выбрать

@@ -14,9 +14,16 @@ const TicketsList = ({setCountShowMore, tickets}) => {
                             segments={i.segments}/>
             )}
             <div className="btn-block">
-                <button className="btn btn--show-more" onClick={showMore}>
-                    Показать еще
-                </button>
+                {tickets.length
+                    ?
+                    <button className="btn btn--show-more" onClick={showMore}>
+                        Показать еще
+                    </button>
+                    :
+                    <div>
+                        По вашим параметрам ничего не найдено
+                    </div>
+                }
             </div>
         </div>
     )

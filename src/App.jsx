@@ -19,12 +19,16 @@ function App() {
     const [currentTickets, setCurrentTickets] = useState([])
     const [sort, setSort] = useState(sortState)
     const [stop, setStop] = useState([])
+    const [company, setCompany] = useState([])
     const [price, setPrice] = useState(['', '']);
     const [isLoad, setIsLoad] = useState(true)
     const [isError, setIsError] = useState(false)
 
     const stops = useMemo(() => [...new Set(tickets.map(n => n.segments[0].stops.length))],
         [tickets]).sort((prev, next) => prev - next)
+
+    const companies = useMemo(() => [...new Set(tickets.map(n => n.carrier))],
+        [tickets])
 
     useEffect(() => {
         async function fetchData() {
@@ -66,18 +70,25 @@ function App() {
 
     useEffect(() => {
         const filtredTickets = tickets.filter(i => (
+            (!company.length || company.includes(i.carrier)) &&
             (!stop.length || stop.includes(i.segments[0].stops.length)) &&
             (!price[0] || price[0] <= i.price) &&
             (!price[1] || price[1] >= i.price)
         ));
         const newTickets = filtredTickets.slice(0, countShowMore)
         setCurrentTickets(newTickets)
-    }, [countShowMore, tickets, sort, stop, price])
+    }, [countShowMore, tickets, sort, stop, price, company])
 
     const onStopsChange = ({target: {checked, value}}) => {
         setStop((!stop.includes(value) && checked)
             ? [...stop, Number(value)]
             : stop.filter(n => n !== Number(value))
+        );
+    };
+    const onCompanyChange = ({target: {checked, value}}) => {
+        setCompany((!company.includes(value) && checked)
+            ? [...company, value]
+            : company.filter(n => n !== value)
         );
     };
 
@@ -108,6 +119,9 @@ function App() {
                                    stops={stops}
                                    stopsValue={stop}
                                    onStopsChange={onStopsChange}
+                                   onCompanyChange={onCompanyChange}
+                                   companiesValue={company}
+                                   companies={companies}
                         />
                         <TicketsList setCountShowMore={setCountShowMore}
                                      tickets={currentTickets}/>

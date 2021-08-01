@@ -2,8 +2,13 @@ import Sort from "./Sort";
 import StopsFilter from "./StopsFilter";
 import PriceFilter from "./PriceFilter";
 import './ParamsBar.scss'
+import CompanyFilter from "./CompanyFilter";
 
-const ParamsBar = ({onSortChange, onStopsChange, stops, sort, price, onPriceChange, stopsValue}) => {
+const ParamsBar = ({
+                       onSortChange, onStopsChange, stops, sort,
+                       price, onPriceChange, stopsValue, companies,
+                       onCompanyChange, companiesValue
+                   }) => {
     return (
         <div className='params-bar'>
             <Sort
@@ -15,6 +20,11 @@ const ParamsBar = ({onSortChange, onStopsChange, stops, sort, price, onPriceChan
                 value={stopsValue}
             />
             <PriceFilter value={price} onChange={onPriceChange}/>
+            <CompanyFilter
+                onChange={onCompanyChange}
+                companies={companies}
+                value={companiesValue}
+            />
         </div>
     )
 }
