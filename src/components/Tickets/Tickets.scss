@@ -1,0 +1,91 @@
+.tickets-list{
+  width: 100%;
+}
+
+.ticket {
+  overflow: hidden;
+  margin: 0 0 10px;
+
+  &__header {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #5d7aff;
+    color: white;
+  }
+
+  &__price {
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__city {
+    margin: 0 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #c5c5c5;
+  }
+
+  &__duration {
+    padding: 10px 0 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 15px;
+  }
+
+  &__stops-block {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__stops {
+    color: #f7a42c;
+    padding: 0 15px;
+    display: inline-block;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      background: #c5c5c5;
+    }
+
+    &:before {
+      right: 100%;
+      left: -300px;
+    }
+
+    &:after {
+      left: 100%;
+      right: -300px;
+    }
+  }
+}
+
+.date {
+  font-weight: 600;
+  &__time {
+    font-size: 12px;
+    margin: 0 5px;
+    color: #3e71cf;
+  }
+}
+
+.line {
+  height: 2px;
+  background: #3e71cf;
+  width: 100%;
+  margin: 0 0 15px;
+}
+
+

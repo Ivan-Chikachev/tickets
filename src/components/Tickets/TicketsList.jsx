@@ -1,11 +1,23 @@
-import TicketItem from "./TicketItem/TicketItem";
+import TicketItem from "./TicketItem";
+import './Tickets.scss'
 
-const TicketsList = ({tickets}) => {
+const TicketsList = ({setCountShowMore, tickets}) => {
+    const showMore = () => {
+        setCountShowMore(count => count + 2)
+    }
     return (
-        <div>
+        <div className='tickets-list'>
             {tickets.map(i =>
-                <TicketItem key={i.price} i={i}/>
+                <TicketItem key={i.price}
+                            carrier={i.carrier}
+                            price={i.price}
+                            segments={i.segments}/>
             )}
+            <div className="btn-block">
+                <button className="btn btn--show-more" onClick={showMore}>
+                    Показать еще
+                </button>
+            </div>
         </div>
     )
 }

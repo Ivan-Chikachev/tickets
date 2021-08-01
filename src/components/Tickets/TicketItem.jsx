@@ -1,8 +1,7 @@
 import {format} from 'date-fns';
 
-const TicketItem = ({i}) => {
+const TicketItem = ({carrier, price, segments}) => {
 
-    const {carrier, price, segments} = i
     const ticket = segments[0]
     const ticket2 = segments[1]
 
@@ -92,7 +91,7 @@ const TicketItem = ({i}) => {
             <div className="ticket__stops-block">
                 <span className='ticket__stops'> {getCountTransfer(stops2.length)}</span>
             </div>
-            <button className="btn">
+            <button className="btn btn--choose">
                 Выбрать
             </button>
         </div>
