@@ -123,8 +123,9 @@ function App() {
                                    companiesValue={company}
                                    companies={companies}
                         />
-                        <TicketsList setCountShowMore={setCountShowMore}
-                                     tickets={currentTickets}/>
+                        <TicketsList
+                            setCountShowMore={setCountShowMore}
+                            tickets={currentTickets}/>
                     </div>
                 }
             </div>
